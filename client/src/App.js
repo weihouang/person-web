@@ -17,7 +17,7 @@ const App = () => {
   return (
     <ConfigProvider
       theme={{
-        algorithm: defaultAlgorithm,
+        algorithm: darkAlgorithm,
       }}
     >
       <Layout>
