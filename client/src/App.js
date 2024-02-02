@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import backgroundImage1 from "./assets/backgroundImage1.png";
+import React from "react";
+import { useState, useEffect } from "react";
+import { Layout, ConfigProvider, theme, Image } from "antd";
 
-function App() {
+import Navbar from "./components/Navbar";
+import MainText from "./components/MainText";
+import ProjectGallery from "./components/ProjectGallery";
+
+const App = () => {
+  const { Header, Footer, Sider, Content } = Layout;
+  const { defaultAlgorithm, darkAlgorithm } = theme;
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const handleClick = () => {
+    setIsDarkMode((previousValue) => !previousValue);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ConfigProvider
+      theme={{
+        algorithm: defaultAlgorithm,
+      }}
+    >
+      <Layout>
+        <Header>
+          <Navbar />
+        </Header>
+        <Content>
+          <MainText />
+          <ProjectGallery />
+        </Content>
+        <Footer>Footer</Footer>
+      </Layout>
+    </ConfigProvider>
   );
-}
+};
 
 export default App;
